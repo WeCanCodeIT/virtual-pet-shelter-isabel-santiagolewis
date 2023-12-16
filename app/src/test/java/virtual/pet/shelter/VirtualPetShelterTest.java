@@ -6,9 +6,9 @@ package virtual.pet.shelter;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class AppTest {
+class VirtualPetShelterTest {
     @Test void appHasAGreeting() {
-        App classUnderTest = new App();
+        VirtualPetShelter classUnderTest = new VirtualPetShelter();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 }
