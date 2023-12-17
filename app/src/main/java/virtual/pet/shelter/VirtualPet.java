@@ -3,20 +3,42 @@ package virtual.pet.shelter;
 public class VirtualPet{
 
     public String name;
-    private int hungerLevel = (int)(Math.random()*100);
-    private int thirstLevel=(int)(Math.random()*100);
-    private int boredomLevel=(int)(Math.random()*100);
-    private int energyLevel=(int)(Math.random()*100);
-    private boolean isCooperative=true;
+    public String description;
+    private int hungerLevel;
+    private int thirstLevel;
+    private int boredomLevel;
+    private int energyLevel;
+    private boolean isCooperative;
 
     public VirtualPet(String name) {
         this.name = name;
+        this.hungerLevel = (int)(Math.random()*100);
+        this.thirstLevel=(int)(Math.random()*100);
+        this.boredomLevel=(int)(Math.random()*100);
+        this.energyLevel=(int)(Math.random()*100);
+        this.isCooperative=true;
+    }
+
+    public VirtualPet(String name, String description) {
+        this.name = name;
+        this.description = description;
+        this.hungerLevel = (int)(Math.random()*100);
+        this.thirstLevel=(int)(Math.random()*100);
+        this.boredomLevel=(int)(Math.random()*100);
+        this.energyLevel=(int)(Math.random()*100);
+        this.isCooperative=true;
     }
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
     }
     public int getHungerLevel() {
         return hungerLevel;

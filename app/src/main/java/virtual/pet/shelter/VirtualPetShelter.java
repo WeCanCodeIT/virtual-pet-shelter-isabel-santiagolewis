@@ -3,12 +3,42 @@
  */
 package virtual.pet.shelter;
 
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class VirtualPetShelter {
-    public String getGreeting() {
-        return "Woof!";
+    public Map<Integer,VirtualPet> petShelter = new HashMap<>();
+    private int petID;
+
+    public void displayPets(){
+        System.out.println("Name\t |Hunger\t |Thirst\t |Boredom\t |Energy Level\t |Description");
+        System.out.println("----|");
+        for (Map.Entry<Integer,VirtualPet> entry: petShelter.entrySet()){
+            VirtualPet virtualPet = entry.getValue();
+            System.out.println(virtualPet.name+"\t |"+virtualPet.getHungerLevel()+" \t |"+);
+        }
+    }
+    
+    public void getSpecificPet(VirtualPet virtualPet){
+
     }
 
-    public static void main(String[] args) {
-        System.out.println(new VirtualPetShelter().getGreeting());
+    public void intakePet(){
+
     }
+
+    public void adoptPet(){
+
+    }
+
+    public void feedAllPet(){
+
+    }
+
+    public void playWithPet(){
+
+    }
+
 }
+

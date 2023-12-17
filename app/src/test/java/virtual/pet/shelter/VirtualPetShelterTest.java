@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class VirtualPetShelterTest {
-    @Test void appHasAGreeting() {
+    @Test 
+    void appHasAGreeting() {
         VirtualPetShelter classUnderTest = new VirtualPetShelter();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
