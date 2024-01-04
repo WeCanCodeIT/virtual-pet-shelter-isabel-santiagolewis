@@ -71,13 +71,15 @@ public class VirtualPetShelter {
 
     public void adoptPet(String petName){
         Boolean containsPet = false;
+        int id = 0;
         for (Map.Entry<Integer,VirtualPet> entry: petShelter.entrySet()){
             if(petName.equalsIgnoreCase(entry.getValue().name)){
                 containsPet = true;
-                petShelter.remove(entry.getKey());
+                id = entry.getKey();
                 System.out.println(petName+" has finally found a nice home! Goodbye "+petName+"!");
             }
         }
+        petShelter.remove(id);
         if (containsPet==false){
             System.out.println("Sorry, that pet is not a pet located at this shelter :,<");
         } 
@@ -106,6 +108,14 @@ public class VirtualPetShelter {
         if (containsPet==false){
             System.out.println("Sorry, that pet is not a pet located at this shelter :,<");
         } 
+    }
+
+    public void tick(){
+        System.out.println();
+        System.out.println("Time has passed. There are new stats for the pets.");
+        for (Map.Entry<Integer,VirtualPet> entry: petShelter.entrySet()){
+            entry.getValue().tick();
+        }
     }
 
 }

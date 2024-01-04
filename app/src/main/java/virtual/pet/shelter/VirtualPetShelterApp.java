@@ -51,31 +51,29 @@ public class VirtualPetShelterApp{
             switch (input) {
                 case 1:
                     virtualPets.feedAllPets();
+                    virtualPets.tick();
                     break;
                 case 2:
                     virtualPets.waterAllPets();
+                    virtualPets.tick();
                     break;
                 case 3:
                     play(virtualPets, userInput);
+                    virtualPets.tick();
                     break;
                 case 4:
                     adopt(virtualPets, userInput);
+                    virtualPets.tick();
                     break;
                 case 5:
-                    System.out.println("We just need a little more information about our new furry friend!");
-                    System.out.print("What is the pet's name?: ");
-                    String admitPetName = userInput.nextLine();
-                    System.out.println("Please provide a short description of your pet: ");
-                    String admitPetDescription = userInput.nextLine();
-                    virtualPets.intakePet(admitPetName,admitPetDescription);
-                    System.out.println( "Let's re-meet our pets!");
-                    virtualPets.meetThePets();
+                    intake(virtualPets, userInput);
+                    virtualPets.tick();
                     break;
                 case 6: 
                     System.out.println("Hope to see you again soon! Goodbye!");
                     break;
                 default:
-                    System.out.println("Invalid choice");
+                    System.out.println("Invalid choice. Please choose a number 1-6");
                     break;
             }
 
@@ -86,6 +84,7 @@ public class VirtualPetShelterApp{
     }
 
     public static void mainMenu(){
+        System.out.println();
         System.out.println("What would you like to do next?");
         System.out.println("1. Feed all pets");
         System.out.println("2. Give water to all pets");
@@ -110,4 +109,14 @@ public class VirtualPetShelterApp{
         virtualPetShelter.adoptPet(adoptPet);
     }
     
+    public static void intake(VirtualPetShelter virtualPetShelter, Scanner scanner){
+        System.out.println("We just need a little more information about our new furry friend!");
+        System.out.print("What is the pet's name?: ");
+        String admitPetName = scanner.nextLine();
+        System.out.println("Please provide a short description of your pet: ");
+        String admitPetDescription = scanner.nextLine();
+        virtualPetShelter.intakePet(admitPetName,admitPetDescription);
+        System.out.println( "Let's re-meet our pets!");
+        virtualPetShelter.meetThePets();
+    }
 }

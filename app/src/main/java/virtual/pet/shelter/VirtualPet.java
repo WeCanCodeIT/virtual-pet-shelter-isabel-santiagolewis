@@ -110,13 +110,10 @@ public class VirtualPet{
     }
 
     public void tick(){
-        int timePassed = (int)(Math.random()*3+2);
-        this.hungerLevel = interactPointsAdd(this.hungerLevel, timePassed*-5); 
-        this.thirstLevel = interactPointsAdd(this.thirstLevel, timePassed*-5);;
-        this.boredomLevel = interactPointsAdd(this.boredomLevel, timePassed*-5);;
-        this.energyLevel = interactPointsAdd(this.energyLevel, timePassed*5);;
-        System.out.print(timePassed+" hours have passed. ");
-        displayPetStatus();
+        this.hungerLevel = interactPointsAdd(this.hungerLevel, -15); 
+        this.thirstLevel = interactPointsAdd(this.thirstLevel, -15);;
+        this.boredomLevel = interactPointsAdd(this.boredomLevel, -15);;
+        this.energyLevel = interactPointsAdd(this.energyLevel, 15);;
     }
 
     public void displayPetStatus(){
