@@ -6,38 +6,106 @@ package virtual.pet.shelter;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class VirtualPetShelter {
     public Map<Integer,VirtualPet> petShelter = new HashMap<>();
     private int petID;
 
-    public void displayPets(){
-        System.out.println("Name\t |Hunger\t |Thirst\t |Boredom\t |Energy Level\t |Description");
-        System.out.println("----|");
+    public void meetThePets(){
+        System.out.println();
+        System.out.println("Let's meet the pets!!!");
+        System.out.println("-----------------|--------------------------------------------------------------------");
+        System.out.println("Name\t\t |Description");
+        System.out.println("-----------------|--------------------------------------------------------------------");
         for (Map.Entry<Integer,VirtualPet> entry: petShelter.entrySet()){
             VirtualPet virtualPet = entry.getValue();
-            System.out.println(virtualPet.name+"\t |"+virtualPet.getHungerLevel()+" \t |"+);
+            if(virtualPet.getName().length()>6){
+                System.out.print(virtualPet.name+"\t |");
+            }
+            else{
+                System.out.print(virtualPet.name+"\t\t |");
+            }
+            System.out.println(virtualPet.getDescription());
         }
+        System.out.println("-----------------|--------------------------------------------------------------------");
+
+    }
+
+    public void displayPets(){
+        System.out.println();
+        System.out.println("-----------------|---------------|---------------|---------------|-----------------------");
+        System.out.println("Name\t\t |Hunger  \t |Thirst  \t |Boredom \t |Energy Level (Note: The higher the better!)");
+        System.out.println("-----------------|---------------|---------------|---------------|-----------------------");
+        for (Map.Entry<Integer,VirtualPet> entry: petShelter.entrySet()){
+            VirtualPet virtualPet = entry.getValue();
+            if(virtualPet.getName().length()>6){
+                System.out.print(virtualPet.name+"\t |");
+            }
+            else{
+                System.out.print(virtualPet.name+"\t\t |");
+            }
+            System.out.println(virtualPet.getHungerLevel()+"\t\t |"
+            +virtualPet.getThirstLevel()+" \t\t |"+virtualPet.getBoredomLevel()+" \t\t |"+virtualPet.getEnergyLevel());
+        }
+        System.out.println("-----------------|---------------|---------------|---------------|-----------------------");
     }
     
-    public void getSpecificPet(VirtualPet virtualPet){
-
+    public VirtualPet getSpecificPet(VirtualPet virtualPet){
+        for (Map.Entry<Integer,VirtualPet> entry: petShelter.entrySet()){
+            if(virtualPet == entry.getValue()){
+                return entry.getValue();
+            }
+        } return null;
     }
 
-    public void intakePet(){
-
+    public void intakePet(VirtualPet virtualPet){
+        petID++;
+        petShelter.put(petID, virtualPet);
     }
 
-    public void adoptPet(){
-
+    public void intakePet(String petName, String description){
+        petID++;
+        VirtualPet newPet = new VirtualPet(petName,description);
+        petShelter.put(petID, newPet);
+        System.out.println(petName+" has been admitted to the pet shelter! ");
     }
 
-    public void feedAllPet(){
-
+    public void adoptPet(String petName){
+        Boolean containsPet = false;
+        for (Map.Entry<Integer,VirtualPet> entry: petShelter.entrySet()){
+            if(petName.equalsIgnoreCase(entry.getValue().name)){
+                containsPet = true;
+                petShelter.remove(entry.getKey());
+                System.out.println(petName+" has finally found a nice home! Goodbye "+petName+"!");
+            }
+        }
+        if (containsPet==false){
+            System.out.println("Sorry, that pet is not a pet located at this shelter :,<");
+        } 
     }
 
-    public void playWithPet(){
+    public void feedAllPets(){
+        for (Map.Entry<Integer,VirtualPet> entry: petShelter.entrySet()){
+            entry.getValue().feedPet();
+        }
+    }
 
+    public void waterAllPets(){
+        for (Map.Entry<Integer,VirtualPet> entry: petShelter.entrySet()){
+            entry.getValue().givePetWater();
+        }
+    }
+
+    public void playWithAPet(String petName){
+        Boolean containsPet = false;
+        for (Map.Entry<Integer,VirtualPet> entry: petShelter.entrySet()){
+            if(petName.equalsIgnoreCase(entry.getValue().name)){
+                containsPet = true;
+                entry.getValue().playWithPet();
+            }
+        }
+        if (containsPet==false){
+            System.out.println("Sorry, that pet is not a pet located at this shelter :,<");
+        } 
     }
 
 }
